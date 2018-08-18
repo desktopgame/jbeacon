@@ -46,6 +46,18 @@ public class BCNamespace {
 	return parentOpt;
     }
     
+    public void dump() {
+	dumpImpl(this, 0);
+    }
+    
+    private void dumpImpl(BCNamespace root, int depth) {
+	for(int i=0; i<depth; i++) {
+	    System.out.print("    ");
+	}
+	System.out.println(root.name);
+	root.namespaceMap.forEach((k, v) -> dumpImpl(v, depth + 1));
+    }
+    
     /**
      * トップレベルの名前空間を返します.
      * @param name
