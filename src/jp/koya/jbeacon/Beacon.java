@@ -30,18 +30,7 @@ public class Beacon {
 	nativeInit();
 	state = State.Initialized;
     }
-    
-    /**
-     * 指定のファイルを実行します.
-     * @param filename 
-     */
-    public static void execute(String filename) {
-	if(state != State.Initialized) {
-	    throw new IllegalStateException();
-	}
-	nativeExecute(filename);
-    }
-    
+
     /**
      * jbeacon を終了します.
      */
@@ -54,6 +43,5 @@ public class Beacon {
     }
     
     private native static void nativeInit();
-    private native static void nativeExecute(String filename);
     private native static void nativeDestroy();
 }
