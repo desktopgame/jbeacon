@@ -11,14 +11,12 @@ import java.util.Stack;
  */
 public class BCScriptContext {
     private byte[] cptr;
-    private Map<String, BCNamespace> rootNamespaceMap;
     
     private static final Stack<BCScriptContext> contextStack = new Stack<>();
     private static final Object mutex = new Object();
     
     private BCScriptContext(byte[] cptr) {
 	this.cptr = cptr;
-	this.rootNamespaceMap = new HashMap<>();
     }
     
     /**
@@ -56,23 +54,7 @@ public class BCScriptContext {
 	    }
 	}
     }
-    
-    /**
-     * トップレベルの名前空間を返します.
-     * @param name
-     * @return 
-     */
-    public BCNamespace getRootNamespace(String name) {
-	if(this.rootNamespaceMap.containsKey(name)) {
-	    return rootNamespaceMap.get(name);
-	}
-	BCNamespace ret = nativeGetRootNamespace(name);
-	rootNamespaceMap.put(name, ret);
-	return ret;
-    }
-    
-    
+
     private static native BCScriptContext nativeOpen();
     private static native void nativeClose();
-    private native BCNamespace nativeGetRootNamespace(String name);
 }
