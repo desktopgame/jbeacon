@@ -28,6 +28,7 @@ public class Beacon {
 	    throw new IllegalStateException();
 	}
 	nativeInit();
+	ScriptContext.open();
 	state = State.Initialized;
     }
     
@@ -49,6 +50,7 @@ public class Beacon {
 	if(state != State.Initialized) {
 	    throw new IllegalStateException();
 	}
+	ScriptContext.close();
 	nativeDestroy();
 	state = State.Destroyed;
     }
