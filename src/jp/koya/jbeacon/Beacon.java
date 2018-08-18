@@ -28,7 +28,6 @@ public class Beacon {
 	    throw new IllegalStateException();
 	}
 	nativeInit();
-	BCScriptContext.open();
 	state = State.Initialized;
     }
     
@@ -50,7 +49,6 @@ public class Beacon {
 	if(state != State.Initialized) {
 	    throw new IllegalStateException();
 	}
-	BCScriptContext.close();
 	nativeDestroy();
 	state = State.Destroyed;
     }
