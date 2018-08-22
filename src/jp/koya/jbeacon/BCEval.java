@@ -11,19 +11,27 @@ public class BCEval {
     /**
      * ファイルを入力として実行します.
      * @param filename 
+     * @return  
      */
-    public static void file(String filename) {
-	nativeFile(filename);
+    public static SymbolTable file(String filename) {
+	if(!BCScriptContext.current().isPresent()) {
+	    throw new IllegalStateException();
+	}
+	return nativeFile(filename);
     }
     
     /**
      * 文字列を入力として実行します.
      * @param sourceCode 
+     * @return  
      */
-    public static void string(String sourceCode) {
-	nativeString(sourceCode);
+    public static SymbolTable string(String sourceCode) {
+	if(!BCScriptContext.current().isPresent()) {
+	    throw new IllegalStateException();
+	}
+	return nativeString(sourceCode);
     }
     
-    private static native void nativeFile(String filename);
-    private static native void nativeString(String sourceCode);
+    private static native SymbolTable nativeFile(String filename);
+    private static native SymbolTable nativeString(String sourceCode);
 }
