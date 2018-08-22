@@ -14,10 +14,20 @@ public class BCEval {
      * @return  
      */
     public static SymbolTable file(String filename) {
+	return file(filename, new SymbolTable());
+    }
+    
+    /**
+     * ファイルを入力として実行します.
+     * @param filename
+     * @param table
+     * @return 
+     */
+    public static SymbolTable file(String filename, SymbolTable table) {
 	if(!BCScriptContext.current().isPresent()) {
 	    throw new IllegalStateException();
 	}
-	return nativeFile(filename);
+	return nativeFile(filename, table);
     }
     
     /**
@@ -26,12 +36,22 @@ public class BCEval {
      * @return  
      */
     public static SymbolTable string(String sourceCode) {
+	return string(sourceCode, new SymbolTable());
+    }
+    
+    /**
+     * 文字列を入力として実行します.
+     * @param sourceCode
+     * @param table
+     * @return 
+     */
+    public static SymbolTable string(String sourceCode, SymbolTable table) {
 	if(!BCScriptContext.current().isPresent()) {
 	    throw new IllegalStateException();
 	}
-	return nativeString(sourceCode);
+	return nativeString(sourceCode, table);
     }
     
-    private static native SymbolTable nativeFile(String filename);
-    private static native SymbolTable nativeString(String sourceCode);
+    private static native SymbolTable nativeFile(String filename, SymbolTable table);
+    private static native SymbolTable nativeString(String sourceCode, SymbolTable table);
 }

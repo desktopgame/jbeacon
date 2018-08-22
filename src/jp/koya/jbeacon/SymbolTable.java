@@ -14,6 +14,10 @@ public class SymbolTable {
 	this.map = new HashMap<>();
     }
     
+    //
+    //put
+    //
+    
     /**
      * 指定のキーと値を紐付けます.
      * @param name
@@ -55,6 +59,9 @@ public class SymbolTable {
 	put(name, value);
     }
 
+    //
+    //get
+    //
 
     /**
      * 指定のキーに対応する値を返します.
@@ -95,5 +102,43 @@ public class SymbolTable {
      */
     public String getString(String name) {
 	return (String)get(name);
+    }
+    
+    //
+    //utilitiy
+    //
+
+    /**
+     * キーが含まれるなら true.
+     * @param key
+     * @return 
+     */
+    public boolean containsKey(String key) {
+	return map.containsKey(key);
+    }
+    
+    /**
+     * 値が含まれるなら true.
+     * @param val
+     * @return 
+     */
+    public boolean containsValue(Object val) {
+	return map.containsValue(val);
+    }
+    
+    /**
+     * キー一覧を返します.
+     * @return 
+     */
+    public String[] getKeys() {
+	return map.keySet().stream().map((e) -> e).toArray(String[]::new);
+    }
+    
+    /**
+     * 値一覧を返します.
+     * @return 
+     */
+    public Object[] getValues() {
+	return (Object[])map.values().toArray();
     }
 }
