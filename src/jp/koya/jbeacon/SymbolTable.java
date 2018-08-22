@@ -58,6 +58,14 @@ public class SymbolTable {
     public void putString(String name, String value) {
 	put(name, value);
     }
+    /**
+     * 指定のキーと値を紐付けます.
+     * @param name
+     * @param value 
+     */
+    public void putBCObject(String name, BCObject value) {
+	put(name, value);
+    }
 
     //
     //get
@@ -102,6 +110,14 @@ public class SymbolTable {
      */
     public String getString(String name) {
 	return (String)get(name);
+    }
+    /**
+     * 指定のキーに対応する値をBCObject型で返します.
+     * @param name
+     * @return 
+     */
+    public BCObject getBCObject(String name) {
+	return (BCObject)get(name);
     }
     
     //
