@@ -39,7 +39,7 @@ public class SymbolTable {
      * @param name
      * @param value 
      */
-    public void putChar(String name, char value) {
+    public void putCharacter(String name, char value) {
 	put(name, value);
     }
     /**
@@ -92,7 +92,7 @@ public class SymbolTable {
      * @param name
      * @return 
      */
-    public char getChar(String name) {
+    public char getCharacter(String name) {
 	return (char)get(name);
     }
     /**
