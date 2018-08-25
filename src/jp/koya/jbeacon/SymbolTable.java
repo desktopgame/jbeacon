@@ -63,6 +63,14 @@ public class SymbolTable {
      * @param name
      * @param value 
      */
+    public void putBoolean(String name, boolean value) {
+	put(name, value);
+    }
+    /**
+     * 指定のキーと値を紐付けます.
+     * @param name
+     * @param value 
+     */
     public void putBCObject(String name, BCObject value) {
 	put(name, value);
     }
@@ -110,6 +118,14 @@ public class SymbolTable {
      */
     public String getString(String name) {
 	return (String)get(name);
+    }
+    /**
+     * 指定のキーに対応する値を真偽型で返します.
+     * @param name
+     * @return 
+     */
+    public boolean getBoolean(String name) {
+	return (boolean)get(name);
     }
     /**
      * 指定のキーに対応する値をBCObject型で返します.
